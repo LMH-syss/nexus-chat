@@ -6,8 +6,8 @@ NexusChat 是一个基于 C++ / Qt 的分布式即时通信系统学习与实践
 
 ## 技术栈
 
-- C++17
-- Qt6
+- C++
+- Qt
 - Boost.Asio
 - gRPC / Protocol Buffers
 - MySQL
