@@ -1,0 +1,247 @@
+#LoginDialog,
+#RegisterDialog,
+#ResetDialog {
+    background: #202020;
+}
+
+QMainWindow#MainWindow {
+    background: #1f1f1f;
+}
+
+#LoginDialog QWidget#widget,
+#RegisterDialog QStackedWidget#stackedWidget,
+#RegisterDialog QWidget#page,
+#ResetDialog {
+    background: #202020;
+}
+
+QWidget#ChatDialog {
+    background: #1f1f1f;
+}
+
+QWidget#window_ctrl_wid {
+    background: transparent;
+}
+
+QPushButton#win_min_btn,
+QPushButton#win_max_btn,
+QPushButton#win_close_btn,
+QPushButton#login_close_btn,
+QPushButton#reg_close_btn,
+QPushButton#reset_close_btn {
+    border: none;
+    background: transparent;
+    color: #a6a6a6;
+    font-size: 14px;
+}
+
+QPushButton#win_min_btn:hover,
+QPushButton#win_max_btn:hover {
+    background: #333333;
+    color: #ffffff;
+}
+
+QPushButton#win_close_btn:hover,
+QPushButton#login_close_btn:hover,
+QPushButton#reg_close_btn:hover,
+QPushButton#reset_close_btn:hover {
+    background: #e81123;
+    color: #ffffff;
+}
+
+QStackedWidget#stackedWidget {
+    background: #1f1f1f;
+}
+
+QWidget#side_bar {
+    background: #202020;
+}
+
+QWidget#chat_user_wid {
+    background: #242424;
+}
+
+QWidget#search_wid {
+    background: #242424;
+}
+
+QLineEdit#search_edit {
+    background: #303030;
+    color: #e6e6e6;
+    selection-background-color: #07c160;
+}
+
+QListWidget#chat_user_list,
+QListWidget#search_list,
+QListWidget#con_user_list {
+    background: #242424;
+    color: #e6e6e6;
+}
+
+QListWidget#apply_friend_list {
+    background: #1f1f1f;
+    color: #e6e6e6;
+}
+
+QListWidget#chat_user_list::item:selected,
+QListWidget#chat_user_list::item:hover {
+    background: #333333;
+}
+
+QLabel#user_name_lb,
+QLabel#search_title_lb {
+    color: #f0f0f0;
+}
+
+QLabel#user_chat_lb,
+QLabel#time_lb,
+QLabel#search_desc_lb,
+QLabel#contact_group_tip_lb,
+QLabel#already_add_lb {
+    color: #a4a4a4;
+}
+
+QWidget#ChatPage,
+QWidget#chat_page,
+QWidget#friend_info_page,
+QWidget#ApplyFriendPage,
+QWidget#chat_data_wid,
+ChatView#chat_data_list,
+QWidget#chat_scroll_content {
+    background: #1f1f1f;
+}
+
+QScrollArea#chat_scroll_area,
+QScrollArea#chat_scroll_area > QWidget,
+QScrollArea#chat_scroll_area QWidget#qt_scrollarea_viewport {
+    background: #1f1f1f;
+}
+
+QWidget#chat_data_wid QWidget#title_wid,
+QWidget#chat_page QWidget#title_wid,
+QWidget#friend_apply_wid,
+QWidget#friend_info_title_wid {
+    background: #1f1f1f;
+    border-bottom: 1px solid #333333;
+}
+
+QWidget#tool_wid,
+QWidget#send_wid,
+QWidget#chat_page QWidget#tool_wid,
+QWidget#chat_page QWidget#send_wid {
+    background: #1f1f1f;
+}
+
+QWidget#tool_wid,
+QWidget#chat_page QWidget#tool_wid {
+    border-top: 1px solid #333333;
+}
+
+QTextEdit#chatEdit {
+    background: #1f1f1f;
+    color: #f0f0f0;
+}
+
+QLabel#title_lb,
+QLabel#friend_apply_lb,
+QLabel#friend_info_title_lb,
+QLabel#friend_info_name_lb {
+    color: #f0f0f0;
+}
+
+QLabel#friend_info_uid_lb,
+QLabel#chat_user_name {
+    color: #a4a4a4;
+}
+
+QWidget#friend_info_card {
+    background: #1f1f1f;
+}
+
+QLabel#bubble_text[chatRole='other'] {
+    color: #ffffff;
+}
+
+QLabel#bubble_text[chatRole='self'] {
+    color: #111111;
+}
+
+ClickedBtn#send_btn {
+    background: #333333;
+    color: #07c160;
+}
+
+ClickedBtn#send_btn[state='hover'] {
+    background: #3b3b3b;
+}
+
+ClickedBtn#send_btn[state='press'] {
+    background: #454545;
+}
+
+QDialog#AddFriendSearchDlg {
+    background: #202020;
+    border: 1px solid #343434;
+}
+
+QDialog#AddFriendSearchDlg QWidget#body_wid,
+QDialog#AddFriendSearchDlg QWidget#title_wid,
+QDialog#AddFriendSearchDlg QWidget#search_wid,
+QDialog#AddFriendSearchDlg QWidget#result_wid {
+    background: #202020;
+    border: none;
+}
+
+QDialog#AddFriendSearchDlg QLabel#title_lb {
+    color: #f5f5f5;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#close_btn {
+    color: #a8a8a8;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#close_btn:hover {
+    background: #3a3a3a;
+    color: #ffffff;
+}
+
+QDialog#AddFriendSearchDlg QLineEdit#search_edit {
+    border: 1px solid #333333;
+    background: #303030;
+    color: #e8e8e8;
+}
+
+QDialog#AddFriendSearchDlg QLabel#result_tip_lb {
+    color: #c8c8c8;
+}
+
+QDialog#AddFriendSearchDlg QWidget#result_card_wid {
+    background: #2c2c2c;
+}
+
+QDialog#AddFriendSearchDlg QLabel#name_lb {
+    color: #f5f5f5;
+}
+
+QDialog#AddFriendSearchDlg QFrame#card_line {
+    background: #3a3a3a;
+    color: #3a3a3a;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#add_friend_btn {
+    background: #3a3a3a;
+    color: #f5f5f5;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#add_friend_btn:hover {
+    background: #454545;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#add_friend_btn:pressed {
+    background: #505050;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#add_friend_btn:disabled {
+    background: #333333;
+    color: #8c8c8c;
+}

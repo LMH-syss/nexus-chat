@@ -1,0 +1,494 @@
+#LoginDialog,
+#RegisterDialog,
+#ResetDialog {
+    background: #f0f0f0;
+}
+
+QMainWindow#MainWindow {
+    background: #f0f0f0;
+}
+
+#LoginDialog QWidget#widget,
+#RegisterDialog QStackedWidget#stackedWidget,
+#RegisterDialog QWidget#page,
+#ResetDialog {
+    background: #f0f0f0;
+}
+
+#user_label, #pass_label{
+
+}
+
+#err_tip[state='normal']{
+    color: green;
+}
+
+#err_tip[state='err']{
+    color: red;
+}
+
+#pass_visible[state='unvisible']{
+   border-image: url(:/res/unvisible.png);
+}
+
+#pass_visible[state='unvisible_hover']{
+   border-image: url(:/res/unvisible_hover.png);
+}
+
+#pass_visible[state='visible']{
+   border-image: url(:/res/visible.png);
+}
+
+#pass_visible[state='visible_hover']{
+   border-image: url(:/res/visible_hover.png);
+}
+
+
+#confirm_visible[state='unvisible']{
+   border-image: url(:/res/unvisible.png);
+}
+
+#confirm_visible[state='unvisible_hover']{
+   border-image: url(:/res/unvisible_hover.png);
+}
+
+#confirm_visible[state='visible']{
+   border-image: url(:/res/visible.png);
+}
+
+#confirm_visible[state='visible_hover']{
+   border-image: url(:/res/visible_hover.png);
+}
+
+
+#forget_label[state='hover'], #forget_label[state='selected_hover']{
+    color: rgb(42, 112, 241);
+}
+
+QWidget#ChatDialog {
+    background: #f0f0f0;
+}
+
+QWidget#window_ctrl_wid {
+    background: transparent;
+}
+
+QPushButton#win_min_btn,
+QPushButton#win_max_btn,
+QPushButton#win_close_btn,
+QPushButton#login_close_btn,
+QPushButton#reg_close_btn,
+QPushButton#reset_close_btn {
+    border: none;
+    background: transparent;
+    color: #9a9a9a;
+    font-size: 14px;
+}
+
+QPushButton#win_min_btn:hover,
+QPushButton#win_max_btn:hover {
+    background: #dddddd;
+    color: #202020;
+}
+
+QPushButton#win_close_btn:hover,
+QPushButton#login_close_btn:hover,
+QPushButton#reg_close_btn:hover,
+QPushButton#reset_close_btn:hover {
+    background: #e81123;
+    color: #ffffff;
+}
+
+QWidget#side_bar {
+    background: #e8e8e8;
+}
+
+QLabel#side_head_lb {
+    border-radius: 4px;
+}
+
+#side_chat_lb[state='normal'] {
+    border-image: url(:/res/chat_icon.png);
+}
+
+#side_chat_lb[state='hover'] {
+    border-image: url(:/res/chat_icon_hover.png);
+}
+
+#side_chat_lb[state='pressed'] {
+    border-image: url(:/res/chat_icon_press.png);
+}
+
+#side_chat_lb[state='selected_normal'],
+#side_chat_lb[state='selected_hover'],
+#side_chat_lb[state='selected_pressed'] {
+    border-image: url(:/res/chat_icon_press.png);
+}
+
+#side_contact_lb[state='normal'] {
+    border-image: url(:/res/contact_list.png);
+}
+
+#side_contact_lb[state='hover'] {
+    border-image: url(:/res/contact_list_hover.png);
+}
+
+#side_contact_lb[state='pressed'] {
+    border-image: url(:/res/contact_list_press.png);
+}
+
+#side_contact_lb[state='selected_normal'],
+#side_contact_lb[state='selected_hover'],
+#side_contact_lb[state='selected_pressed'] {
+    border-image: url(:/res/contact_list_press.png);
+}
+
+QWidget#chat_user_wid {
+    background: #efefef;
+}
+
+QWidget#search_wid {
+    background: #efefef;
+}
+
+QLineEdit#search_edit {
+    border: none;
+    border-radius: 4px;
+    background: #e2e2e2;
+    color: #333333;
+    padding-left: 6px;
+}
+
+ClickedBtn#add_btn[state='normal'] {
+    border: none;
+    border-image: url(:/res/add_friend_normal.png);
+}
+
+ClickedBtn#add_btn[state='hover'] {
+    border: none;
+    border-image: url(:/res/add_friend_hover.png);
+}
+
+ClickedBtn#add_btn[state='press'] {
+    border: none;
+    border-image: url(:/res/add_friend.png);
+}
+
+QListWidget#chat_user_list,
+QListWidget#search_list,
+QListWidget#con_user_list {
+    border: none;
+    outline: 0;
+    background: #efefef;
+}
+
+QListWidget#apply_friend_list {
+    border: none;
+    outline: 0;
+    background: #f0f0f0;
+}
+
+QListWidget#chat_user_list::item {
+    border: none;
+}
+
+QListWidget#chat_user_list::item:selected,
+QListWidget#chat_user_list::item:hover {
+    background: #d6d6d6;
+}
+
+QWidget#ChatUserWid {
+    background: transparent;
+}
+
+QWidget#ContactUserItem {
+    background: transparent;
+}
+
+QLabel#user_name_lb {
+    color: #222222;
+    font-size: 14px;
+}
+
+QLabel#user_chat_lb,
+QLabel#time_lb,
+QLabel#search_desc_lb {
+    color: #8f8f8f;
+    font-size: 12px;
+}
+
+QLabel#red_point {
+    border-image: url(:/res/red_point.png);
+}
+
+QLabel#contact_group_tip_lb {
+    color: #8f8f8f;
+    font-size: 12px;
+}
+
+QWidget#ChatPage,
+QWidget#chat_page,
+QWidget#friend_info_page,
+QWidget#ApplyFriendPage,
+QWidget#chat_data_wid,
+ChatView#chat_data_list,
+QWidget#chat_scroll_content {
+    background: #f0f0f0;
+}
+
+QWidget#friend_apply_wid,
+QWidget#friend_info_title_wid {
+    background: #f0f0f0;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+QLabel#friend_apply_lb,
+QLabel#friend_info_title_lb {
+    color: #202020;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+QWidget#friend_info_card {
+    background: #f0f0f0;
+    margin-top: 44px;
+}
+
+QLabel#friend_info_name_lb {
+    color: #202020;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+QLabel#friend_info_uid_lb {
+    color: #8f8f8f;
+    font-size: 13px;
+}
+
+QWidget#ApplyFriendItem {
+    background: transparent;
+}
+
+QLabel#already_add_lb {
+    color: #8f8f8f;
+}
+
+ClickedBtn#addBtn {
+    border: none;
+    border-radius: 3px;
+    background: #07c160;
+    color: white;
+}
+
+ClickedBtn#addBtn[state='hover'] {
+    background: #18a058;
+}
+
+ClickedBtn#addBtn[state='press'] {
+    background: #078a46;
+}
+
+QScrollArea#chat_scroll_area {
+    border: none;
+    background: #f0f0f0;
+}
+
+QWidget#title_wid {
+    background: #f0f0f0;
+    border-bottom: 1px solid #d9d9d9;
+}
+
+QLabel#title_lb {
+    color: #202020;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+QWidget#tool_wid,
+QWidget#send_wid {
+    background: #f0f0f0;
+}
+
+QWidget#tool_wid {
+    border-top: 1px solid #d9d9d9;
+}
+
+QTextEdit#chatEdit {
+    border: none;
+    background: #f0f0f0;
+    color: #202020;
+    font-size: 14px;
+}
+
+ClickedLabel#emo_lb[state='normal'],
+ClickedLabel#emo_lb[state='selected'] {
+    border-image: url(:/res/smile.png);
+}
+
+ClickedLabel#emo_lb[state='hover'],
+ClickedLabel#emo_lb[state='pressed'],
+ClickedLabel#emo_lb[state='selected_hover'],
+ClickedLabel#emo_lb[state='selected_pressed'] {
+    border-image: url(:/res/smile_hover.png);
+}
+
+ClickedLabel#file_lb[state='normal'],
+ClickedLabel#file_lb[state='selected'] {
+    border-image: url(:/res/filedir.png);
+}
+
+ClickedLabel#file_lb[state='hover'],
+ClickedLabel#file_lb[state='pressed'],
+ClickedLabel#file_lb[state='selected_hover'],
+ClickedLabel#file_lb[state='selected_pressed'] {
+    border-image: url(:/res/filedir_hover.png);
+}
+
+ClickedBtn#send_btn {
+    border: none;
+    border-radius: 3px;
+    background: #e9e9e9;
+    color: #07c160;
+    font-size: 14px;
+}
+
+ClickedBtn#send_btn[state='hover'] {
+    background: #dddddd;
+}
+
+ClickedBtn#send_btn[state='press'] {
+    background: #d0d0d0;
+}
+
+QLabel#chat_user_name {
+    color: #9a9a9a;
+    font-size: 12px;
+}
+
+QLabel#bubble_text {
+    color: #111111;
+    font-size: 14px;
+}
+
+QDialog#AddFriendSearchDlg {
+    background: #f2f2f2;
+    border: 1px solid #d6d6d6;
+    border-radius: 6px;
+}
+
+QDialog#AddFriendSearchDlg QWidget#body_wid {
+    background: #f2f2f2;
+    border: none;
+    border-radius: 6px;
+}
+
+QDialog#AddFriendSearchDlg QWidget#title_wid,
+QDialog#AddFriendSearchDlg QWidget#search_wid,
+QDialog#AddFriendSearchDlg QWidget#result_wid {
+    background: #f2f2f2;
+    border: none;
+}
+
+QDialog#AddFriendSearchDlg QWidget#title_wid {
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+QDialog#AddFriendSearchDlg QWidget#result_wid {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+QDialog#AddFriendSearchDlg QLabel#title_lb {
+    color: #202020;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#close_btn {
+    border: none;
+    background: transparent;
+    color: #606060;
+    font-size: 20px;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#close_btn:hover {
+    background: #e5e5e5;
+    color: #202020;
+}
+
+QDialog#AddFriendSearchDlg QLineEdit#search_edit {
+    border: 1px solid #d7d7d7;
+    border-radius: 4px;
+    background: #ffffff;
+    color: #202020;
+    padding-left: 10px;
+    selection-background-color: #07c160;
+}
+
+QDialog#AddFriendSearchDlg QLineEdit#search_edit:focus {
+    border: 1px solid #07c160;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#search_btn {
+    border: none;
+    border-radius: 4px;
+    background: #07c160;
+    color: #ffffff;
+    font-weight: 500;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#search_btn:hover {
+    background: #18a058;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#search_btn:pressed {
+    background: #078a46;
+}
+
+QDialog#AddFriendSearchDlg QLabel#result_tip_lb {
+    color: #666666;
+    font-size: 13px;
+    min-height: 24px;
+}
+
+QDialog#AddFriendSearchDlg QWidget#result_card_wid {
+    background: #ffffff;
+    border-radius: 6px;
+}
+
+QDialog#AddFriendSearchDlg QLabel#avatar_lb {
+    background: #f8f8f8;
+    border-radius: 4px;
+}
+
+QDialog#AddFriendSearchDlg QLabel#name_lb {
+    color: #202020;
+    font-size: 15px;
+}
+
+QDialog#AddFriendSearchDlg QFrame#card_line {
+    background: #e5e5e5;
+    color: #e5e5e5;
+    max-height: 1px;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#add_friend_btn {
+    border: none;
+    border-radius: 4px;
+    background: #e9e9e9;
+    color: #202020;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#add_friend_btn:hover {
+    background: #dddddd;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#add_friend_btn:pressed {
+    background: #d0d0d0;
+}
+
+QDialog#AddFriendSearchDlg QPushButton#add_friend_btn:disabled {
+    background: #eeeeee;
+    color: #999999;
+}
