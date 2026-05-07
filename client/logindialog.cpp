@@ -60,7 +60,6 @@ void LoginDialog::initHttpHandlers()
         if (error != ErrorCodes::SUCCESS) {
             showTips(tr("参数错误"), false);
             setLoginPending(false);
-            // enableBtn(true);
             return;
         }
 
@@ -125,7 +124,6 @@ bool LoginDialog::checkUserValid()
     auto user = ui->user_edit->text();
 
     if (user.isEmpty()) {
-        // qDebug() << "User empty";
         AddTipErr(TipErr::TIP_PWD_ERR, tr("用户名不能为空"));
         return false;
     }
@@ -138,7 +136,6 @@ bool LoginDialog::checkPwdValid()
     auto pwd = ui->pass_edit->text();
 
     if (pwd.length() < 6 || pwd.length() > 15) {
-        // qDebug() << "Pass length invalid";
         AddTipErr(TipErr::TIP_PWD_ERR, tr("密码长度应为6~15"));
         return false;
     }

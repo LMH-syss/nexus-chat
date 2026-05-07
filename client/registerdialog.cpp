@@ -64,7 +64,6 @@ RegisterDialog::RegisterDialog(QWidget *parent)
         }else{
             ui->pass_edit->setEchoMode(QLineEdit::Normal);
         }
-        // qDebug() << "Label was clicked!";
     });
 
     connect(ui->confirm_visible, &ClickedLabel::clicked, this, [this]() {
@@ -74,7 +73,6 @@ RegisterDialog::RegisterDialog(QWidget *parent)
         }else{
             ui->confirm_edit->setEchoMode(QLineEdit::Normal);
         }
-        // qDebug() << "Label was clicked!";
     });
 
     // 创建定时器

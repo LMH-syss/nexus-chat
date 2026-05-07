@@ -20,9 +20,9 @@ private:
     uint16_t _port;
     QByteArray _buffer;
     QTimer* _heartbeat_timer;
-    bool _b_recv_pending;//琛ㄧず宸茬粡璇昏繃浜嗗寘澶达紝浣嗗唴瀹规病鏈夎鍙栧畬鏁?
-    quint16 _message_id;//娑堟伅绫诲瀷
-    quint16 _message_len;//娑堟伅瀛楄妭闀垮害
+    bool _b_recv_pending; // 已读取包头，但包体尚未接收完整
+    quint16 _message_id; // 消息类型
+    quint16 _message_len; // 消息体字节长度
 public slots:
     void slot_tcp_connect(ServerInfo);
     void slot_send_data(ReqId reqid, QString data);

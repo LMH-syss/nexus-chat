@@ -1,11 +1,11 @@
-#include "LogicSystem.h"
+ï»¿#include "LogicSystem.h"
 #include "HttpConnection.h"
 #include "VarifyGrpcClient.h"
 #include "RedisMgr.h"
 #include "MysqlMgr.h"
 #include "StatusGrpcClient.h"
 LogicSystem::LogicSystem() {
-    RegGet("/get_test", [](std::shared_ptr<HttpConnection> connection) {//³õÊ¼»¯Ê±×¢²á/get_testÂ·ÓÉ
+    RegGet("/get_test", [](std::shared_ptr<HttpConnection> connection) {//åˆå§‹åŒ–æ—¶æ³¨å†Œ/get_testè·¯ç”±
         beast::ostream(connection->_response.body()) << "receive get_test req";
         int i = 0;
         for (auto& elem: connection->_get_params) {
@@ -14,8 +14,8 @@ LogicSystem::LogicSystem() {
             beast::ostream(connection->_response.body()) << "param" << i << "value is" << elem.second << std::endl;
         }
      });
-    //×¢²ápostÇëÇó
-    RegPost("/get_varifycode", [](std::shared_ptr<HttpConnection> connection){//°Ñ¡°¿Í»§¶Ë·¢À´µÄ JSON ÇëÇó¡±±ä³É¡°·þÎñÆ÷ÄÜÀí½âµÄÊý¾Ý¡±£¬ÔÙ»ØÒ»¸ö JSON ÏìÓ¦
+    //æ³¨å†Œpostè¯·æ±‚
+    RegPost("/get_varifycode", [](std::shared_ptr<HttpConnection> connection){//æŠŠâ€œå®¢æˆ·ç«¯å‘æ¥çš„ JSON è¯·æ±‚â€å˜æˆâ€œæœåŠ¡å™¨èƒ½ç†è§£çš„æ•°æ®â€ï¼Œå†å›žä¸€ä¸ª JSON å“åº”
         auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
         std::cout << "receive body is " << body_str << std::endl;
         connection->_response.set(http::field::content_type, "text/json");
@@ -39,7 +39,7 @@ LogicSystem::LogicSystem() {
         beast::ostream(connection->_response.body()) << jsonstr;
         return true;
      });
-    //×¢²á
+    //æ³¨å†Œ
     RegPost("/user_register", [](std::shared_ptr<HttpConnection> connection) {
         auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
         std::cout << "receive body is " << body_str << std::endl;
@@ -69,7 +69,7 @@ LogicSystem::LogicSystem() {
             return true;
         }
 
-        //ÏÈ²éÕÒredisÖÐemail¶ÔÓ¦µÄÑéÖ¤ÂëÊÇ·ñºÏÀí
+        //å…ˆæŸ¥æ‰¾redisä¸­emailå¯¹åº”çš„éªŒè¯ç æ˜¯å¦åˆç†
         std::string  varify_code;
         bool b_get_varify = RedisMgr::GetInstance()->Get(CODEPREFIX + src_root["email"].asString(), varify_code);
         if (!b_get_varify) {
@@ -88,7 +88,7 @@ LogicSystem::LogicSystem() {
             return true;
         }
 
-        //²éÕÒÊý¾Ý¿âÅÐ¶ÏÓÃ»§ÊÇ·ñ´æÔÚ
+        //æŸ¥æ‰¾æ•°æ®åº“åˆ¤æ–­ç”¨æˆ·æ˜¯å¦å­˜åœ¨
         int uid = MysqlMgr::GetInstance()->RegUser(name, email, pwd);
         if (uid == 0 || uid == -1) {
             std::cout << " user or email exist" << std::endl;
@@ -109,7 +109,7 @@ LogicSystem::LogicSystem() {
         return true;
         });
 
-    //ÖØÖÃ»Øµ÷Âß¼­
+    //é‡ç½®å›žè°ƒé€»è¾‘
     RegPost("/reset_pwd", [](std::shared_ptr<HttpConnection> connection) {
         auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
         std::cout << "receive body is " << body_str << std::endl;
@@ -130,7 +130,7 @@ LogicSystem::LogicSystem() {
         auto name = src_root["user"].asString();
         auto pwd = src_root["passwd"].asString();
 
-        //ÏÈ²éÕÒredisÖÐemail¶ÔÓ¦µÄÑéÖ¤ÂëÊÇ·ñºÏÀí
+        //å…ˆæŸ¥æ‰¾redisä¸­emailå¯¹åº”çš„éªŒè¯ç æ˜¯å¦åˆç†
         std::string varify_code;
         bool b_get_varify = RedisMgr::GetInstance()->Get(CODEPREFIX + src_root["email"].asString(), varify_code);
         if (!b_get_varify) {
@@ -148,7 +148,7 @@ LogicSystem::LogicSystem() {
             beast::ostream(connection->_response.body()) << jsonstr;
             return true;
         }
-        //²éÑ¯Êý¾Ý¿âÅÐ¶ÏÓÃ»§ÃûºÍÓÊÏäÊÇ·ñÆ¥Åä
+        //æŸ¥è¯¢æ•°æ®åº“åˆ¤æ–­ç”¨æˆ·åå’Œé‚®ç®±æ˜¯å¦åŒ¹é…
         bool email_valid = MysqlMgr::GetInstance()->CheckEmail(name, email);
         if (!email_valid) {
             std::cout << " user email not match" << std::endl;
@@ -158,7 +158,7 @@ LogicSystem::LogicSystem() {
             return true;
         }
 
-        //¸üÐÂÃÜÂëÎª×îÐÂÃÜÂë
+        //æ›´æ–°å¯†ç ä¸ºæœ€æ–°å¯†ç 
         bool b_up = MysqlMgr::GetInstance()->UpdatePwd(name, pwd);
         if (!b_up) {
             std::cout << " update pwd failed" << std::endl;
@@ -179,7 +179,7 @@ LogicSystem::LogicSystem() {
         return true;
         });
 
-    //ÓÃ»§µÇÂ¼Âß¼­
+    //ç”¨æˆ·ç™»å½•é€»è¾‘
     RegPost("/user_login", [](std::shared_ptr<HttpConnection> connection) {
         auto body_str = boost::beast::buffers_to_string(connection->_request.body().data());
         std::cout << "receive body is " << body_str << std::endl;
@@ -199,7 +199,7 @@ LogicSystem::LogicSystem() {
         auto email = src_root["email"].asString();
         auto pwd = src_root["passwd"].asString();
         UserInfo userInfo;
-        //²éÑ¯Êý¾Ý¿âÅÐ¶ÏÓÃ»§ÃûºÍÃÜÂëÊÇ·ñÆ¥Åä
+        //æŸ¥è¯¢æ•°æ®åº“åˆ¤æ–­ç”¨æˆ·åå’Œå¯†ç æ˜¯å¦åŒ¹é…
         bool pwd_valid = MysqlMgr::GetInstance()->CheckPwd(email, pwd, userInfo);
         if (!pwd_valid) {
             std::cout << " user pwd not match" << std::endl;
@@ -209,7 +209,7 @@ LogicSystem::LogicSystem() {
             return true;
         }
 
-        //²éÑ¯StatusServerÕÒµ½ºÏÊÊµÄÁ¬½Ó
+        //æŸ¥è¯¢StatusServeræ‰¾åˆ°åˆé€‚çš„è¿žæŽ¥
         auto reply = StatusGrpcClient::GetInstance()->GetChatServer(userInfo.uid);
         if (reply.error()) {
             std::cout << " grpc get chat server failed, error is " << reply.error() << std::endl;
@@ -245,7 +245,7 @@ void LogicSystem::RegPost(std::string url, HttpHandler handler) {
     _post_handlers.insert(make_pair(url, handler));
 }
 
-bool LogicSystem::HandleGet(std::string path, std::shared_ptr<HttpConnection> con) {//²éÑ¯Â·ÓÉ±í²¢ÇÒÖ´ÐÐ
+bool LogicSystem::HandleGet(std::string path, std::shared_ptr<HttpConnection> con) {//æŸ¥è¯¢è·¯ç”±è¡¨å¹¶ä¸”æ‰§è¡Œ
     auto it = _get_handlers.find(path);
     if (it == _get_handlers.end()) {
         return false;
@@ -255,7 +255,7 @@ bool LogicSystem::HandleGet(std::string path, std::shared_ptr<HttpConnection> co
     return true;
 }
 
-bool LogicSystem::HandlePost(std::string path, std::shared_ptr<HttpConnection> con) {//²épost±í
+bool LogicSystem::HandlePost(std::string path, std::shared_ptr<HttpConnection> con) {//æŸ¥postè¡¨
     if (_post_handlers.find(path) == _post_handlers.end()) {
         return false;
     }

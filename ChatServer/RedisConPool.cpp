@@ -1,4 +1,4 @@
-#include "RedisConPool.h"
+ï»¿#include "RedisConPool.h"
 
 #include <iostream>
 
@@ -20,14 +20,14 @@ RedisConPool::RedisConPool(size_t poolSize, const char* host, int port, const ch
         }
 
         if (reply->type == REDIS_REPLY_ERROR) {
-            std::cout << "ÈÏÖ¤Ê§°Ü" << std::endl;
+            std::cout << "è®¤è¯å¤±è´¥" << std::endl;
             freeReplyObject(reply);
             redisFree(context);
             continue;
         }
 
         freeReplyObject(reply);
-        //std::cout << "ÈÏÖ¤³É¹¦" << std::endl;
+        //std::cout << "è®¤è¯æˆåŠŸ" << std::endl;
         connections_.push(context);
     }
 }

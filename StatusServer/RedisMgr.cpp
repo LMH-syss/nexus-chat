@@ -1,4 +1,4 @@
-#include "RedisMgr.h"
+﻿#include "RedisMgr.h"
 
 #include <cstdlib>
 #include <cstring>
@@ -110,14 +110,14 @@ bool RedisMgr::Auth(const std::string& password) {
     }
 
     if (reply->type == REDIS_REPLY_ERROR) {
-        std::cout << "��֤ʧ��" << std::endl;
+        std::cout << "redis auth failed" << std::endl;
         freeReplyObject(reply);
         _con_pool->returnConnection(connect);
         return false;
     }
     else {
         freeReplyObject(reply);
-        std::cout << "��֤�ɹ�" << std::endl;
+        std::cout << "redis auth success" << std::endl;
         _con_pool->returnConnection(connect);
         return true;
     }

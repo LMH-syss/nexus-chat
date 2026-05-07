@@ -29,9 +29,9 @@ public:
 		try {
 			for (int i = 0; i < poolSize_; ++i) {
 				auto* con = createConnection();
-				// 鑾峰彇褰撳墠鏃堕棿鎴?
+				// 获取当前时间戳
 				auto currentTime = std::chrono::system_clock::now().time_since_epoch();
-				// 灏嗘椂闂存埑杞崲涓虹
+				// 将时间戳转换为秒
 				long long timestamp = std::chrono::duration_cast<std::chrono::seconds>(currentTime).count();
 				pool_.push(std::make_unique<SqlConnection>(con, timestamp));
 			}
@@ -46,23 +46,23 @@ public:
 			_check_thread.detach();
 		}
 		catch (sql::SQLException& e) {
-			// 澶勭悊寮傚父
+			// 处理初始化异常
 			std::cout << "mysql pool init failed, error is " << e.what() << std::endl;
 		}
 	}
 
 	void checkConnectionPro() {
-		// 1)鍏堣鍙栤€滅洰鏍囧鐞嗘暟鈥?
+		// 1) 读取本轮需要检查的连接数量
 		size_t targetCount;
 		{
 			std::lock_guard<std::mutex> guard(mutex_);
 			targetCount = pool_.size();
 		}
 
-		//2 褰撳墠宸茬粡澶勭悊鐨勬暟閲?
+		// 2) 已经处理的连接数量
 		size_t processed = 0;
 
-		//3 鏃堕棿鎴?
+		// 3) 当前时间戳
 		auto now = std::chrono::system_clock::now().time_since_epoch();
 		long long timestamp = std::chrono::duration_cast<std::chrono::seconds>(now).count();
 
@@ -78,7 +78,7 @@ public:
 			}
 
 			bool healthy = true;
-			//瑙ｉ攣鍚庡仛妫€鏌?閲嶈繛閫昏緫
+			// 解锁后检查连接，必要时执行重连
 			if (timestamp - con->_last_oper_time >= 5) {
 				try {
 					std::unique_ptr<sql::Statement> stmt(con->_con->createStatement());
@@ -103,7 +103,7 @@ public:
 			++processed;
 		}
 
-		// 淇鐐癸細闃叉姝婚攣锛寃hile (_fail_count > 0) 闇€瑕佸湪娌℃湁鎸佹湁mutex_閿佺殑鎯呭喌涓嬫墽琛?
+			// 修复点：避免死锁，重连逻辑需要在未持有 mutex_ 的情况下执行
 		while (_fail_count > 0) {
 			auto b_res = reconnect(timestamp);
 			if (b_res) {
@@ -158,11 +158,10 @@ public:
 				std::unique_ptr<sql::Statement> stmt(con->_con->createStatement());
 				stmt->executeQuery("SELECT 1");
 				con->_last_oper_time = timestamp;
-				//std::cout << "execute timer alive query , cur is " << timestamp << std::endl;
 			}
 			catch (sql::SQLException& e) {
 				std::cout << "Error keeping connection alive: " << e.what() << std::endl;
-				// 閲嶆柊鍒涘缓杩炴帴骞舵浛鎹㈡棫鐨勮繛鎺?
+				// 重新创建连接并替换旧连接
 				sql::mysql::MySQL_Driver* driver = sql::mysql::get_mysql_driver_instance();
 				auto* newcon = driver->connect(url_, user_, pass_);
 				newcon->setSchema(schema_);

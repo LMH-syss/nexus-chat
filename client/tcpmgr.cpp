@@ -7,6 +7,10 @@
 #include <QNetworkProxy>
 #include "usermgr.h"
 
+namespace {
+constexpr int kMaxTcpBodyLen = 1024 * 2;
+}
+
 TcpMgr::TcpMgr()
     :_host(""),
      _port(0),
@@ -42,6 +46,13 @@ TcpMgr::TcpMgr()
                 const auto* data = reinterpret_cast<const uchar*>(_buffer.constData());
                 _message_id = static_cast<quint16>((data[0] << 8) | data[1]);
                 _message_len = static_cast<quint16>((data[2] << 8) | data[3]);
+                if (_message_len > kMaxTcpBodyLen) {
+                    qWarning() << "[TcpMgr] invalid message length:" << _message_len
+                               << ", max=" << kMaxTcpBodyLen;
+                    resetRecvState();
+                    _socket.abort();
+                    return;
+                }
                 //
                 _buffer.remove(0, sizeof(quint16) * 2);
 

@@ -93,18 +93,13 @@ void CSession::AsyncReadHead(int total_len)
 				return;
 			}
 
-			//if (!_server->CheckValid(_session_id)) {
-			//	Close();
-			//	return;
-			//}
-
 			_recv_head_node->Clear();
 			memcpy(_recv_head_node->_data, _data, bytes_transfered);
 
 		
 			short msg_id = 0;
 			memcpy(&msg_id, _recv_head_node->_data, HEAD_ID_LEN);
-			//鐏忓棛缍夌紒婊冪摟閼哄倸绨潪顒佸床娑撹桨瀵岄張鍝勭摟閼哄倸绨?
+			// 将消息 id 从网络字节序转换为主机字节序
 			msg_id = boost::asio::detail::socket_ops::network_to_host_short(msg_id);
 			std::cout << "msg_id is " << msg_id << endl;
 

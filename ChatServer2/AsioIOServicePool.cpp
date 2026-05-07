@@ -1,15 +1,15 @@
-#include "AsioIOServicePool.h"
+ï»¿#include "AsioIOServicePool.h"
 #include <iostream>
 
 using namespace std;
 
 AsioIOServicePool::AsioIOServicePool(std::size_t size) :_ioServices(size), _works(size), _nextIOService(0)
 {
-	for (std::size_t i = 0; i < size; ++i) {//´´½¨io_service¶ÔÏó
+	for (std::size_t i = 0; i < size; ++i) {//åˆ›å»ºio_serviceå¯¹è±¡
 		_works[i] = std::make_unique<Work>(boost::asio::make_work_guard(_ioServices[i]));
 	}
 
-	for (std::size_t i = 0; i < _ioServices.size(); ++i) {//´´½¨Ïß³Ì²¢ÔËÐÐio_service
+	for (std::size_t i = 0; i < _ioServices.size(); ++i) {//åˆ›å»ºçº¿ç¨‹å¹¶è¿è¡Œio_service
 		_threads.emplace_back([this, i]() {
 			try {
 				_ioServices[i].run();
@@ -37,10 +37,6 @@ boost::asio::io_context& AsioIOServicePool::GetIOService()
 }
 
 void AsioIOServicePool::Stop() {
-	//for (auto& ioService : _ioServices) {
-	//	ioService.stop();
-	//}
-
 	for(auto & work : _works) {
 		work->reset();
 	}

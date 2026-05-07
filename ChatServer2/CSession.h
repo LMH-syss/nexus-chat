@@ -14,50 +14,13 @@
 
 using namespace std;
 
-namespace beast = boost::beast;         // from <boost/beast.hpp>
-namespace http = beast::http;           // from <boost/beast/http.hpp>
-namespace net = boost::asio;            // from <boost/asio.hpp>
-using tcp = boost::asio::ip::tcp;       // from <boost/asio/ip/tcp.hpp>
+namespace beast = boost::beast;         // 来自 <boost/beast.hpp>
+namespace http = beast::http;           // 来自 <boost/beast/http.hpp>
+namespace net = boost::asio;            // 来自 <boost/asio.hpp>
+using tcp = boost::asio::ip::tcp;       // 来自 <boost/asio/ip/tcp.hpp>
 
 class CServer;
 class LogicSystem;
-
-//class CSession : public std::enable_shared_from_this<CSession>
-//{	
-//public:
-//	CSession(boost::asio::io_context& io_context, CServer* server);
-//	~CSession();
-//	void AsyncReadBody(int length);
-//	void AsyncReadHead(int total_len);
-//	void Start();
-//
-//	void SetUserId(int uid);
-//	int GetUserId();
-//
-//	tcp::socket& GetSocket();
-//	std::string& GetSessionId();
-//private:
-//	void asyncReadFull(std::size_t maxLength, std::function<void(const boost::system::error_code&, std::size_t)> handler);
-//	void asyncReadLen(std::size_t  read_len, std::size_t total_len,std::function<void(const boost::system::error_code&, std::size_t)> handler);
-//
-//	tcp::socket _socket;
-//	std::string _session_id;
-//	char _data[MAX_LENGTH];
-//	CServer* _server;
-//	bool _b_close;
-//	std::queue<shared_ptr<SendNode> > _send_que;
-//	std::mutex _send_lock;
-//	//�յ�����Ϣ�ṹ
-//	std::shared_ptr<RecvNode> _recv_msg_node;
-//	bool _b_head_parse;
-//	//�յ���ͷ���ṹ
-//	std::shared_ptr<MsgNode> _recv_head_node;
-//	int _user_uid;
-//	//��¼�ϴν������ݵ�ʱ��
-//	std::atomic<time_t> _last_heartbeat;
-//	//session ��
-//	std::mutex _session_mtx;
-//};
 
 class CSession : public std::enable_shared_from_this<CSession>
 {
@@ -78,7 +41,7 @@ public:
     int GetUserId();
     void UpdateHeartbeat();
      
-    // Send message to client
+    // 向客户端发送消息
     void Send(std::string msg, short msgid);
 
 private:
