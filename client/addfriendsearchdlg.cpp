@@ -100,7 +100,7 @@ void AddFriendSearchDlg::slot_search_user_result(QJsonObject data)
     } else {
         ui->name_lb->setText(name);
     }
-    ui->avatar_lb->setPixmap(QPixmap(":/res/head_1.jpg"));
+    ui->avatar_lb->setPixmap(QPixmap(":/res/head.png"));
     ui->gender_lb->setPixmap(QPixmap(":/res/male.png"));
     ui->add_friend_btn->setEnabled(true);
     ui->add_friend_btn->setText(tr("添加到通讯录"));

@@ -44,7 +44,7 @@ void ApplyFriendPage::slot_incoming_apply(QJsonObject data)
     int from_uid = data["from_uid"].toInt();
     QString from_name = data["from_name"].toString();
     QString msg = data["msg"].toString();
-    AddApply(from_uid, from_name, msg, ":/res/head_1.jpg", false);
+    AddApply(from_uid, from_name, msg, ":/res/head.png", false);
 }
 
 void ApplyFriendPage::loadApplyList()
@@ -60,7 +60,7 @@ void ApplyFriendPage::slot_apply_list_result(QJsonObject data)
         int from_uid = obj["from_uid"].toInt();
         QString from_name = obj["from_name"].toString();
         QString desc = tr("Request to add you as friend");
-        AddApply(from_uid, from_name, desc, ":/res/head_1.jpg", false);
+        AddApply(from_uid, from_name, desc, ":/res/head.png", false);
     }
 }
 

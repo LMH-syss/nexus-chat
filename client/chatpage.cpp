@@ -54,7 +54,7 @@ void ChatPage::ScrollToBottom()
 void ChatPage::slot_show_incoming_msg(int from_uid, const QString& from_name, const QString& message)
 {
     if (from_uid == _toUid) {
-        AppendChatMsg(from_name, message, false, ":/res/head_1.jpg");
+        AppendChatMsg(from_name, message, false, ":/res/head.png");
     }
 }
 

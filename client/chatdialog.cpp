@@ -78,7 +78,7 @@ void ChatDialog::initUiState()
         setWindowTitle(userInfo.name);
     }
 
-    ui->side_head_lb->setPixmap(QPixmap(":/res/head_1.jpg"));
+    ui->side_head_lb->setPixmap(QPixmap(":/res/head.png"));
     ui->side_chat_lb->SetState("normal", "hover", "pressed",
                                "selected_normal", "selected_hover", "selected_pressed");
     ui->side_contact_lb->SetState("normal", "hover", "pressed",
@@ -844,8 +844,8 @@ void ChatDialog::slot_notify_auth_friend(QJsonObject data)
     QString from_name = data["from_name"].toString();
     qDebug() << "Friend request accepted by" << from_name << "uid:" << from_uid;
 
-    addContactUserItem(from_uid, from_name, ":/res/head_1.jpg");
-    addChatUserItem(from_uid, from_name, tr("Start chatting"), QString(), ":/res/head_1.jpg");
+    addContactUserItem(from_uid, from_name, ":/res/head.png");
+    addChatUserItem(from_uid, from_name, tr("Start chatting"), QString(), ":/res/head.png");
 }
 
 void ChatDialog::slot_friend_list_result(QJsonObject data)
@@ -872,8 +872,8 @@ void ChatDialog::slot_friend_list_result(QJsonObject data)
         if (lastMsg.isEmpty()) {
             lastMsg = tr("Start chatting");
         }
-        addContactUserItem(uid, name, ":/res/head_1.jpg");
-        addChatUserItem(uid, name, lastMsg, lastTime, ":/res/head_1.jpg",
+        addContactUserItem(uid, name, ":/res/head.png");
+        addChatUserItem(uid, name, lastMsg, lastTime, ":/res/head.png",
                         unreadCount, lastTimestamp);
     }
 }
@@ -892,7 +892,7 @@ void ChatDialog::slot_notify_text_chat_msg(QJsonObject data)
     // 如果发送者不在会话列表中，动态添加
     if (!_chatItems.contains(from_uid)) {
     if (!_chatItems.contains(from_uid)) {
-        addChatUserItem(from_uid, from_name, message, sendTime, ":/res/head_1.jpg");
+        addChatUserItem(from_uid, from_name, message, sendTime, ":/res/head.png");
     }
 
     // 显示到聊天区域
@@ -923,7 +923,7 @@ void ChatDialog::slot_notify_text_chat_msg(QJsonObject data)
     }
 
     if (!_chatItems.contains(from_uid)) {
-        addChatUserItem(from_uid, from_name, message, sendTime, ":/res/head_1.jpg",
+        addChatUserItem(from_uid, from_name, message, sendTime, ":/res/head.png",
                         0, sendTimestamp);
     }
 
@@ -975,7 +975,7 @@ void ChatDialog::slot_text_chat_msg_result(QJsonObject data)
 
     const auto currentUser = UserMgr::GetInstance()->GetUserInfo();
     const auto selfName = currentUser.name.isEmpty() ? tr("Me") : currentUser.name;
-    ui->chat_page->AppendChatMsg(selfName, content, true, ":/res/head_1.jpg");
+    ui->chat_page->AppendChatMsg(selfName, content, true, ":/res/head.png");
 }
 
 void ChatDialog::slot_chat_history_result(QJsonObject data)
@@ -1026,7 +1026,7 @@ void ChatDialog::slot_chat_history_result(QJsonObject data)
         ui->chat_page->AppendChatMsg(isSelf ? selfName : peerName,
                                      content,
                                      isSelf,
-                                     isSelf ? ":/res/head_1.jpg" : peerAvatar);
+                                     isSelf ? ":/res/head.png" : peerAvatar);
         lastMsg = content;
         lastTime = formatChatTime(rawSendTime);
         lastTimestamp = parseChatTimestamp(rawSendTime);

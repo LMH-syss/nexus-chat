@@ -7,7 +7,7 @@ NexusChat 是一个基于 C++ / Qt 的分布式即时通信系统学习与实践
 ## 技术栈
 
 - C++17
-- Qt
+- Qt6
 - Boost.Asio
 - gRPC / Protocol Buffers
 - MySQL
@@ -26,33 +26,12 @@ VarifyServer/   Node.js 邮箱验证码服务，目录名沿用项目原拼写
 sql/            MySQL 数据库脚本
 ```
 
-## 上传前注意事项
-
-仓库中应保留源码、Qt UI 文件、资源文件、协议文件、项目工程文件、SQL 建表脚本和依赖描述文件，例如：
-
-- `*.cpp`、`*.h`、`*.ui`、`*.qrc`、`*.proto`
-- Visual Studio 工程文件：`*.sln`、`*.vcxproj`、`*.vcxproj.filters`
-- Qt 工程文件：`client/chat.pro`
-- Node.js 依赖描述：`VarifyServer/package.json`、`VarifyServer/package-lock.json`
-- 数据库结构脚本：`sql/schema.sql`
-
-不要上传本地构建产物、IDE 缓存、运行日志、依赖目录和真实配置文件，例如：
-
-- `.vs/`、`x64/`、`Debug/`、`Release/`、`build/`、`bin/`、`obj/`
-- `*.exe`、`*.dll`、`*.pdb`、`*.obj`、`*.ilk`
-- `node_modules/`
-- `config.ini`、`config.json`、`.env`
-
 ## 配置说明
 
-各服务需要本地配置 MySQL、Redis、服务端口和邮箱授权信息。真实的 `config.ini`、`config.json`、`.env` 等文件不应提交到 GitHub。首次运行前，请在本地按各服务代码读取的字段创建配置文件，并使用自己的数据库、Redis 和邮箱授权信息。
+各服务需要本地配置 MySQL、Redis、服务端口和邮箱授权信息。首次运行前，请在本地按各服务代码读取的字段创建配置文件，并使用自己的数据库、Redis 和邮箱授权信息。
 
 各服务目录中的 `config.example.ini` 和 `VarifyServer/config.example.json` 提供了配置字段示例。运行前可参考示例文件创建本地 `config.ini` 或 `config.json`，并填入自己的服务地址、邮箱授权码、MySQL 和 Redis 配置。
 
 ## 数据库
 
-`sql/schema.sql` 用于创建项目所需表结构。上传前请确认 SQL 文件中不包含真实用户账号、密码哈希、邮箱、手机号或聊天记录。
-
-## 项目状态
-
-这是一个学习与实践项目，重点在于理解分布式即时通信系统的基础模块拆分和服务协作方式。生产环境使用前还需要补充更完整的安全配置、部署脚本、日志治理、异常处理和测试覆盖。
+`sql/schema.sql` 用于创建项目所需表结构。
